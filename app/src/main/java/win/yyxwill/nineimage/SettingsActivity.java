@@ -39,7 +39,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("设置");
         toolbar.setTitleTextColor(Color.WHITE);
-        Drawable d=getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        Drawable d = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setNavigationIcon(d);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +47,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 SettingsActivity.this.finish();
             }
         });
+
+//        ActionBar actionBar =
+
         addPreferencesFromResource(R.xml.pref_setting);
 
         init();
