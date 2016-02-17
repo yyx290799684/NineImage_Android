@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NineImage</string>
+
+    <string name="addimg">点击添加图片</string>
+
+    <string name="action_settings">设置</string>
+    <string name="action_ok">导出</string>
+    <string name="title_activity_settings">设置</string>
+
+    <string name="setting_delete_cache">清空缓存图片</string>
+    <string name="setting_auto_delete">发送后自动删除缓存图片</string>
+</resources>

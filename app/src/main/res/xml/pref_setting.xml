@@ -1,0 +1,12 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="setting_delete_cache_preference"
+        android:title="@string/setting_delete_cache" />
+
+    <!--<CheckBoxPreference-->
+        <!--android:defaultValue="false"-->
+        <!--android:key="setting_auto_delete_preference"-->
+        <!--android:title="@string/setting_auto_delete" />-->
+
+</PreferenceScreen>
