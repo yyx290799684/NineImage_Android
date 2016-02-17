@@ -2,11 +2,13 @@ package win.yyxwill.nineimage;
 
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
@@ -37,6 +39,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("设置");
         toolbar.setTitleTextColor(Color.WHITE);
+        Drawable d=getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        toolbar.setNavigationIcon(d);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingsActivity.this.finish();
+            }
+        });
         addPreferencesFromResource(R.xml.pref_setting);
 
         init();
