@@ -9,4 +9,13 @@
         <!--android:key="setting_auto_delete_preference"-->
         <!--android:title="@string/setting_auto_delete" />-->
 
+    <ListPreference
+        android:key="setting_image_quality_preference"
+        android:title="@string/setting_image_quality"
+        android:entries="@array/setting_image_quality_options"
+        android:entryValues="@array/setting_image_quality_options_values"
+        android:defaultValue="2"
+        android:dialogTitle="@string/setting_image_quality_dialogtitle"
+        />
+
 </PreferenceScreen>

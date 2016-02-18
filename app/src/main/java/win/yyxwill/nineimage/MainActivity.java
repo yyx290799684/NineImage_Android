@@ -2,11 +2,14 @@ package win.yyxwill.nineimage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -85,7 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
                         int width = wm.getDefaultDisplay().getWidth() < wm.getDefaultDisplay().getHeight() ? wm.getDefaultDisplay().getWidth() : wm.getDefaultDisplay().getHeight();
                         Log.i(options.outWidth + " 123123123", options.outWidth + "");
-                        provider.corpImage(uri, width, width, new OnImageSelectListener() {
+
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                        String option = prefs.getString("setting_image_quality_preference", "高");
+                        String[] optionText = MainActivity.this.getResources().getStringArray(R.array.setting_image_quality_options);
+                        Log.i("图片质量num", option);
+                        Log.i("图片质量string", optionText[Integer.parseInt(option)]);
+
+
+                        provider.corpImage(uri, (Integer.parseInt(option)+1)*500, (Integer.parseInt(option)+1)*500, new OnImageSelectListener() {
                             @Override
                             public void onImageSelect() {
 
@@ -128,12 +139,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                File destDir = new File("/sdcard/NineImage/" + date);
+                File destDir = new File(Environment.getExternalStorageDirectory().getPath() + "/NineImage/" + date);
                 if (!destDir.exists()) {
                     destDir.mkdirs();
                 }
                 for (int i = 0; i < 9; i++) {
-                    File f = new File("/sdcard/NineImage/" + date, i + ".png");
+                    File f = new File(Environment.getExternalStorageDirectory().getPath() + "/NineImage/" + date, i + ".png");
                     if (f.exists()) {
                         f.delete();
                     }
@@ -158,12 +169,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         mainprogressBar.setProgress(100);
-                        Toast.makeText(MainActivity.this, "图片已导出至/sdcard/NineImage/" + date, Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "图片已导出至" + Environment.getExternalStorageDirectory().getPath() + "/NineImage/" + date, Toast.LENGTH_LONG).show();
                     }
                 });
                 ArrayList uriList = new ArrayList<>();
                 for (int i = 0; i < 9; i++) {
-                    uriList.add(Uri.fromFile(new File("/sdcard/NineImage/" + date + "/" + i + ".png")));
+                    uriList.add(Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/NineImage/" + date + "/" + i + ".png")));
                 }
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
@@ -177,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void delete( File file) {
+    public void delete(File file) {
         if (file.isDirectory()) {
             File[] childFiles = file.listFiles();
             if (childFiles == null || childFiles.length == 0) {

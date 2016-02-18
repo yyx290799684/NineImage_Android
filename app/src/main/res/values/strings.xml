@@ -9,4 +9,18 @@
 
     <string name="setting_delete_cache">清空缓存图片</string>
     <string name="setting_auto_delete">发送后自动删除缓存图片</string>
+    <string name="setting_image_quality">图片质量</string>
+    <string name="setting_image_quality_dialogtitle">请选择图片质量</string>
+
+    <string-array name="setting_image_quality_options">
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="setting_image_quality_options_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

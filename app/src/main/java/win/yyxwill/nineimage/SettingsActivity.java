@@ -4,6 +4,7 @@ package win.yyxwill.nineimage;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,7 +25,7 @@ import java.io.File;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity {
+public class SettingsActivity extends PreferenceActivity {
     private Preference deleteCachePreference = null;
 //    private CheckBoxPreference autoDeletePreference = null;
 
@@ -83,12 +84,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     private class deleteCachePreferenceClick implements Preference.OnPreferenceClickListener {
         @Override
         public boolean onPreferenceClick(Preference preference) {
-            File destDir = new File("/sdcard/NineImage");
+            File destDir = new File(Environment.getExternalStorageDirectory().getPath()+"/NineImage");
             Log.i("/sdcard/NineImage", "/sdcard/NineImage");
             if (destDir.exists()) {
                 delete(destDir);
                 Log.i("/sdcard/NineImage1111", "/sdcard/NineImage1111");
             }
+
             return false;
         }
     }
