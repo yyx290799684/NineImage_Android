@@ -90,8 +90,14 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(options.outWidth + " 123123123", options.outWidth + "");
 
                         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                        String option = prefs.getString("setting_image_quality_preference", "高");
-                        String[] optionText = MainActivity.this.getResources().getStringArray(R.array.setting_image_quality_options);
+                        String option = "2";
+                        String[] optionText = null;
+                        try
+                        {
+                             option = prefs.getString("setting_image_quality_preference", "2");
+                             optionText = MainActivity.this.getResources().getStringArray(R.array.setting_image_quality_options);
+                        }
+                        catch (Exception e) {}
                         Log.i("图片质量num", option);
                         Log.i("图片质量string", optionText[Integer.parseInt(option)]);
 
